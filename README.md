@@ -1,37 +1,28 @@
 # NebulaExtract
 
-CLI em Python que transforma texto não estruturado (emails, tickets, mensagens) em JSON estruturado usando a Gemini API.
+A Python CLI that transforms unstructured text (emails, tickets, messages) into structured JSON using Google Gemini.
 
-## Core Features & Concepts:
+## Core Features & Concepts
 
-LLM Integration: Direct communication with Gemini via HTTP API.
-Smart Prompting: Dynamically builds JSON payloads for the model.
-Resilient Parsing: Defensive logic to handle LLM responses reliably.
-JSON Sanitization: Post-processing to ensure you get JSON output.
-Validation: Built-in verification using json.loads to catch formatting errors.
+- **LLM Integration:** Direct communication with Gemini via HTTP API (urllib).
+- **Smart Prompting:** Builds a strict JSON-only extraction prompt.
+- **Resilient Parsing:** Defensive logic to handle LLM responses reliably.
+- **JSON Sanitization:** Removes ```json wrappers when the model returns Markdown.
+- **Validation:** Uses `json.loads` to verify the output is valid JSON.
 
 ## Prerequisites
-Python 3.x and a Gemini API Key: Needs to be configured as an environment variable.
 
-## So... how do i run?
+- Python 3.x
+- A Gemini API key available as an environment variable: `GEMINI_API_KEY`
 
-# Navigate to the project directory:
+## How to run (Windows PowerShell)
+
+```powershell
+# Navigate to the project directory
 cd NebulaExtract
 
-# Set your API Key for the session:
-paste "$env:GEMINI_API_KEY="YOUR_KEY_HERE""
+# Set your API key for the current terminal session
+$env:GEMINI_API_KEY="YOUR_KEY_HERE"
 
-# Launch the tool:
-python cli\main.py
-
-# output example:
-{
-  "summary": "...",
-  "intent": "...",
-  "priority": "low|medium|high",
-  "entities": {
-    "name": null,
-    "email": null,
-    "phone": null
-  }
-}
+# Run the CLI
+python .\cli\main.py
