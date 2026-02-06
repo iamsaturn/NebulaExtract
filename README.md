@@ -2,9 +2,9 @@
 
 A Python CLI that transforms unstructured text (emails, tickets, messages) into structured JSON using Google Gemini.
 
----
 
-## 💡 What it does
+
+##  What it does
 
 NebulaExtract takes free-form text and extracts structured information such as **summary, intent, priority, and entities**, returning a clean and validated JSON output ready for automation or downstream processing.
 
@@ -14,9 +14,9 @@ Typical use cases include:
 - User messages
 - Any unstructured text input
 
----
 
-## 📥 Example
+
+## Example
 
 ### Input
 ```text
@@ -70,14 +70,16 @@ Python 3.x
 A Gemini API key available as an environment variable: GEMINI_API_KEY
 
 # How to run (Windows PowerShell)
-## Navigate to the project directory
+### Navigate to the project directory
+```PowerShell
 cd NebulaExtract
-
-## Set your API key for the current terminal session
+```
+### Set your API key for the current terminal session
 
 ```PowerShell
 $env:GEMINI_API_KEY="YOUR_KEY_HERE"
 ```
-
-## Run the CLI
+### Run the CLI
+```PowerShell
 python .\cli\main.py
+```
