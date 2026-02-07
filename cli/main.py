@@ -1,7 +1,14 @@
 import os
 import json
+import argparse
 import urllib.request
 import urllib.error
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--text")
+    args = parser.parse_args()
+    return args
 
 def build_prompt(user_text: str) -> str: #this builds the prompt that goes to gemini
     return f"""
@@ -106,17 +113,20 @@ def extract_text(api_response: dict) -> str:
     return parts[0].get("text", "")
 
 def main(): #this function coordinates the program
-    print("NebulaExtract (CLI)")
-    print("Paste your text, then send an empty line for confirmation!.\n")
+    args = parse_args()
+    if args.text:
+        user_text = args.text
+    else:
+        print("NebulaExtract (CLI)")
+        print("Paste your text, then send an empty line for confirmation!.\n")
+        lines = []
+        while True:
+            line = input()
+            if line.strip() == "":
+                break
+            lines.append(line)
 
-    lines = []
-    while True:
-        line = input()
-        if line.strip() == "":
-            break
-        lines.append(line)
-
-    user_text = "\n".join(lines).strip()
+        user_text = "\n".join(lines).strip()
     if not user_text:
         print("No text recieved. Try again.")
         return

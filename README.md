@@ -12,7 +12,7 @@ Typical use cases include:
 - Support tickets
 - Emails
 - User messages
-- Any unstructured text input
+- Any unstructured text input **(through interactive or automation mode)**
 
 
 
@@ -69,6 +69,26 @@ Python 3.x
 
 A Gemini API key available as an environment variable: GEMINI_API_KEY
 
+# Usage
+
+NebulaExtract can be used in two ways: **interactive mode** (human-friendly) or **CLI mode** (automation-friendly).
+
+### Interactive mode (default)
+
+Run the program without arguments and paste your text directly into the terminal.  
+Finish the input by pressing **Enter on an empty line**.
+
+```powershell
+python .\cli\main.py
+```
+
+### CLI Mode (using --text)
+You can also provide the input text directly as a command-line argument.
+```PowerShell
+python .\cli\main.py --text "Hi, I need help with my subscription"
+```
+This mode is designed for automation, scripting, and integration with other systems.
+
 # How to run (Windows PowerShell)
 ### Navigate to the project directory
 ```PowerShell
@@ -78,8 +98,12 @@ cd NebulaExtract
 
 ```PowerShell
 $env:GEMINI_API_KEY="YOUR_KEY_HERE"
-```
-### Run the CLI
+``` 
+### Run the CLI (interactive mode)
 ```PowerShell
 python .\cli\main.py
+```
+### or Run the CLI with direct input (--text)
+```PowerShell
+python .\cli\main.py --text "Your text here"
 ```
